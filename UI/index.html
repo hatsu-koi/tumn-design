@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<style>
+			.toggle-button {
+				margin-left: 20px;
+				position: relative;
+				display: inline-block;
+				color: #fff;
+				height: 50px;
+			}
+			
+			.toggle-button label {
+				display: inline-block;
+				text-transform: uppercase;
+				cursor: pointer;
+				text-align: left;
+			}
+			
+			.toggle-button input {
+				display: none;
+			}
+			 
+			.toggle-button-icon {
+				cursor: pointer;
+				pointer-events: none;
+			}
+			
+			.toggle-button-icon:before, .toggle-button-icon:after {
+				content: "";
+				position: absolute;
+				top: 45%;
+				left: 35%;
+				transition: 0.2s ease-out;
+			}
+
+			.toggle-button label {
+				height: 50px;
+				line-height: 50px;
+				transition: all 0.2s;
+				border-radius: 2rem;
+			}
+			
+			.toggle-button label:before, .toggle-button label:after {
+				position: absolute;
+				right: 1.5rem;
+				transition: all 0.2s .1s ease-out;
+			}
+			
+			.toggle-button label:before {
+				content: attr(data-on-text);
+			}
+			
+			.toggle-button label:after {
+				content: attr(data-off-text);
+			}
+
+			.toggle-button input[type=checkbox] + label {
+				width: 120px;
+				background: #404040;
+			}
+			
+			.toggle-button input[type=checkbox] + label:before {
+				opacity: 0;
+				transform: translate(0, 20px);
+			}
+			
+			.toggle-button input[type=checkbox] + label:after {
+				opacity: 1;
+				transform: translate(0, 0);
+			}
+
+			.toggle-button input[type=checkbox]:checked ~ label {
+				width: 120px;
+				background: #ff5722;
+			}
+			
+			.toggle-button input[type=checkbox]:checked ~ label:before {
+				opacity: 1;
+				transform: translate(0, 0);
+			}
+			
+			.toggle-button input[type=checkbox]:checked ~ label:after {
+				opacity: 0;
+				transform: translate(0, -20px);
+			}
+
+			.toggle-button input[type=checkbox]:checked ~ .toggle-button-icon:before {
+				transform: translate(-10%, 100%) rotate(45deg);
+				width: 16.66667px;
+			}
+
+			.toggle-button input[type=checkbox]:checked ~ .toggle-button-icon:after {
+				transform: translate(30%) rotate(-45deg);
+			}
+
+			.toggle-button .toggle-button-icon {
+				position: absolute;
+				left: 0;
+				top: 0;
+				height: 50px;
+				width: 50px;
+			}
+			
+			.toggle-button .toggle-button-icon:before, .toggle-button .toggle-button-icon:after {
+				height: 3px;
+				border-radius: 3px;
+				background: #fff;
+				box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+			}
+			
+			.toggle-button .toggle-button-icon:before {
+				width: 25px;
+				transform: rotate(45deg);
+			}
+			
+			.toggle-button .toggle-button-icon:after {
+				width: 25px;
+				transform: rotate(-45deg);
+			}
+			
+			.slide-button {
+				width: 120px;
+				height: 50px;
+				line-height: 50px;
+				text-transform: uppercase;
+				text-align: center;
+				display: inline-block;
+				margin-left: 20px;
+				border-radius: 25px;
+				background: #ff5722;
+				color: #fff;
+			}
+			
+			.setting-button {
+				height: 50px;
+				line-height: 50px;
+				text-transform: uppercase;
+				text-align: center;
+				margin: 0 5px;
+				/* border-radius: 25px; */
+				background: #ff9800;
+				color: #fff;
+				font-size: .9rem;
+				cursor: pointer;
+				display: inline-block;
+				flex: 1;
+			}
+			
+			.setting-item {
+				margin: 10px 0;
+				/* box-shadow: #303030 0 0 3px 0; */
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				padding: 10px;
+			}
+			
+			.setting-title, .setting-content {
+				display: inline-block;
+				margin: 0;
+			}
+			
+			.setting-title {
+				flex: 1;
+				font-size: 1.2rem;
+			}
+			
+			.logo {
+				    background-image: url(./img/tumn-logo.png);
+					background-color: #ff5722;
+					width: 100%;
+					height: 100px;
+					background-size: contain;
+					background-repeat: no-repeat;
+					background-position: center;
+			}
+			
+			html, body {
+				/* background: #f0f1f2; */
+				padding: 0;
+				margin: 0;
+			}
+			
+			main {
+				width: 300px;
+				background: #fff;
+			}
+			
+			*:not(.fa) {
+				font-family: 'Roboto' !important;
+				font-weight: 300 !important;
+			}
+			
+			.graph {
+				margin-top: 10px;
+				display: flex;
+				justify-content: center;
+			}
+			
+			.graph > .c100 > span:hover {
+				color: #ff5722 !important;
+			}
+			
+			.buttons {
+				display: flex;
+				margin: 0 15px;
+				margin-bottom: 10px;
+			}
+		</style>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.22/css/uikit.min.css">
+		<link rel="stylesheet" href="https://cdn.rawgit.com/afuersch/css-percentage-circle/master/css/circle.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.22/js/uikit.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.22/js/uikit-icons.min.js"></script>
+	</head>
+	
+	<body>
+		<main>
+			<div class="logo"></div>
+			
+			<div class="graph">
+				<div class="c100 p75">
+					<span>75%</span>
+					<div class="slice">
+						<div class="bar" style="border: 0.08em solid #ff5722"></div>
+						<div class="fill" style="border: 0.08em solid #ff5722"></div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="setting-item">
+				<h2 class="setting-title">KIDS MODE</h2>
+				<div class="setting-content">
+					<div class="toggle-button">
+						<input id="child-mode" type="checkbox">
+						<label for="child-mode" data-on-text="On" data-off-text="Off"></label>
+						<div class="toggle-button-icon"></div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="setting-item">
+				<h2 class="setting-title">FILTER MODE</h2>
+				<div class="setting-content">
+					<div class="slide-button">
+						Blur
+					</div>
+				</div>
+			</div>
+			
+			<div class="buttons">
+				<div class="setting-button">
+					<i class="fa fa-cog"></i> Setting
+				</div>
+				
+				<div class="setting-button">
+					<i class="fa fa-check"></i> Whitelist
+				</div>
+			</div>
+		</main>
+	</body>
+</html>

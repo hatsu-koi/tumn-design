@@ -1,0 +1,17 @@
+{
+    "manifest_version": 2,
+    "name": "Tumn UI",
+    "version": "1.0",
+    "description": "Tumn UI Prototype",
+    "default_locale": "en",
+    "icons": {
+        "16": "icons/icon16.png",
+        "24": "icons/icon24.png",
+        "32": "icons/icon32.png"
+    },
+    "browser_action": {
+        "default_icon": "icons/icon32.png",
+		"default_popup": "index.html"
+    },
+    "permissions": []
+}
